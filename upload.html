@@ -10,11 +10,15 @@
 <meta property="og:title" content="Selfie оруулах · nna.mn">
 <meta property="og:description" content="Марафон, тоглолт, төгсөлтийн зургуудаас өөрийнхөө зургийг нэг selfie-ээр олж ав. Бүртгэл шаардлагагүй.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://nna.mn/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <script>(function(){try{var t=localStorage.getItem('nna-theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/onest-cyrillic-ext.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/ui.css">
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -38,32 +42,33 @@
     <div class="flow-head">
       <span class="kicker">Алхам 1 / 4</span>
       <h1 class="h1">Нүүр тод харагдах selfie оруулна уу</h1>
-      <p class="lead">Бид энэ зургаар таныг эвэнтийн зургуудаас олно. Selfie 24 цагийн дотор устгагдана.</p>
+      <p class="lead only-d">Бид энэ зургаар таныг эвэнтийн зургуудаас олно. Selfie 24 цагийн дотор устгагдана.</p>
+    </div>
+
+    <div class="ctx evchip" style="max-width: 560px">
+      <span class="th poster ph m-dawn x26 pv-top" aria-hidden="true"></span>
+      <span class="tx"><small>Хайх эвэнт</small><b>Улаанбаатар марафон 2026</b><small>9,244 зураг · 05.23</small></span>
+      <a class="link" href="index.html#events">Солих</a>
     </div>
 
     <div class="layout">
       <section class="main" style="gap: 16px">
         <div class="card pad stack" style="gap: 18px">
-          <div class="viewport cam" aria-hidden="true">
+          <div class="viewport cam" aria-hidden="true" data-cam>
             <span class="corners"></span>
             <span class="oval"></span>
             <span class="scanline w" style="left: 32%; right: 32%"></span>
             <span class="vhint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="10.5" r="2.5"/><path d="M8.5 16.5c.9-1.4 2.1-2 3.5-2s2.6.6 3.5 2"/></svg>Нүүрээ зууван хүрээнд багтаа</span>
           </div>
+          <label class="check"><input type="checkbox" id="consent"><span>Selfie-гээ зөвхөн энэ хайлтад ашиглаж, 24 цагийн дотор устгахыг зөвшөөрч байна. <a href="#" style="color: var(--blue-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Нууцлалын бодлого</a></span></label>
           <div class="cam-actions">
-            <a class="btn btn-pri btn-lg" href="matching.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Камер нээх</a>
-            <a class="btn btn-line btn-lg" href="matching.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.6"/><path d="m21 15-5-5L5 21"/></svg>Зураг сонгох</a>
+            <a class="btn btn-pri btn-lg" href="matching.html" aria-disabled="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Selfie авах</a>
+            <a class="btn btn-line btn-lg" href="matching.html" aria-disabled="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.6"/><path d="m21 15-5-5L5 21"/></svg>Зураг сонгох</a>
           </div>
-          <label class="check"><input type="checkbox" checked><span>Selfie-гээ зөвхөн энэ хайлтад ашиглахыг зөвшөөрч байна. <a href="#" style="color: var(--blue-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Нууцлалын бодлого</a></span></label>
         </div>
       </section>
 
       <aside class="side">
-        <div class="card pad ctx">
-          <span class="th ph m-dawn x26" aria-hidden="true"></span>
-          <span class="tx"><small>Хайх эвэнт</small><b>Улаанбаатар марафон 2026</b><small>9,244 зураг · 05.23</small></span>
-          <a class="link" href="index.html#events">Солих</a>
-        </div>
         <div class="card pad stack">
           <h2 class="h3" style="font-size: 17px">Ямар selfie сайн бэ?</h2>
           <div class="tips">

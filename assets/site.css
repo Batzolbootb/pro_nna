@@ -1,19 +1,55 @@
 /* nna.mn — site-only additions (menu, toast, upload preview) */
 .nav .mnav{display:none}
+.nav .mtheme{align-items:center;gap:10px;min-height:48px;padding:0 12px;border:0;border-radius:10px;background:none;font-size:16px;font-weight:500;color:var(--ink2);text-align:left;cursor:pointer}
+.nav .mtheme svg{color:var(--sub)}
+.hdr .m-lib{display:none!important}
 @media (max-width:860px){
   .hdr .wrap{position:relative}
+  .hdr .m-lib{display:inline-grid!important}
   .hdr.open .nav{display:flex!important;position:absolute;left:var(--gut);right:var(--gut);top:calc(100% + 8px);flex-direction:column;align-items:stretch;gap:2px;padding:8px;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:var(--sh3);animation:menuIn .2s ease-out}
   .hdr.open .nav a{min-height:48px;font-size:16px}
   .hdr.open .nav a[aria-current]::after{display:none}
   .hdr.open .nav .mnav{display:flex}
+  .hdr.open .nav .mtheme{margin-top:4px;border-top:1px solid var(--line);border-radius:0 0 10px 10px}
 }
 @keyframes menuIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.toast{position:fixed;left:50%;bottom:24px;z-index:80;max-width:calc(100% - 32px);transform:translate(-50%,16px);opacity:0;padding:12px 18px;border-radius:14px;background:var(--solid);color:var(--on-solid);font-size:15px;font-weight:600;box-shadow:var(--sh3);transition:opacity .2s,transform .2s;pointer-events:none}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));z-index:80;max-width:calc(100% - 32px);transform:translate(-50%,16px);opacity:0;padding:12px 18px;border-radius:14px;background:var(--solid);color:var(--on-solid);font-size:15px;font-weight:600;box-shadow:var(--sh3);transition:opacity .2s,transform .2s;pointer-events:none}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-@media (max-width:900px){.toast{bottom:92px}}
+dialog .toast{bottom:calc(96px + env(safe-area-inset-bottom))}
+@media (max-width:900px){
+  body:has(.mbar.show,.mbar:not(.auto)) .toast{bottom:calc(92px + env(safe-area-inset-bottom))}
+  html:has(.mbar){scroll-padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+}
 .viewport .shot-img,.avatar .shot-img,.frame .shot-img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
 .avatar{position:relative;overflow:hidden}
 .btn[aria-disabled="true"]{pointer-events:none}
 .ev[hidden]{display:none!important}
 .empty{display:none;padding:32px;border:1px dashed var(--line2);border-radius:var(--r3);text-align:center;color:var(--mute)}
 .empty.show{display:block}
+
+/* event page: sticky bar only once the selfie card has scrolled away */
+.mbar.auto{transition:transform .25s,opacity .25s,visibility .25s}
+.mbar.auto:not(.show){transform:translateY(110%);opacity:0;visibility:hidden}
+.drop .t-touch{display:none}
+@media (hover:none){.drop .t-ptr{display:none}.drop .t-touch{display:inline}}
+
+/* upload: consent gates the buttons, but taps still explain why */
+.cam-actions .btn[aria-disabled="true"]{pointer-events:auto;cursor:pointer}
+.viewport.cam{cursor:pointer}
+.ctx.evchip{padding:10px 14px 10px 10px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.ctx.evchip .th{width:44px;height:55px;border-radius:10px}
+/* phones: the stepper already names the step, so the "Алхам N / 4" kicker only costs height */
+@media (max-width:560px){.flow .kicker{display:none}.viewport.cam{aspect-ratio:16/11}.match .viewport{max-width:150px}}
+
+/* checkout: QR on demand on phones */
+.qrbox.qr-on .qr{display:block!important}
+.qrbox .banks .p{text-align:center}
+
+/* results: compact toolbar */
+.toolbar .chip{min-height:40px;padding:0 14px}
+@media (max-width:560px){.toolbar .row{width:100%}.toolbar .chip{flex:1;justify-content:center}}
+
+/* library */
+.lt .lt-open{position:absolute;inset:0;z-index:3;width:100%;padding:0;border:0;border-radius:inherit;background:none;cursor:zoom-in}
+.success .acts{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:560px){.success .acts,.success .acts .btn{width:100%}.codebox .row{width:100%}.codebox .row .btn{flex:1 1 0;padding:0 10px}}
